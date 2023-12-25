@@ -5,14 +5,21 @@ namespace App\Controllers;
 use App\Models\BrandModel;
 use App\Models\CategoriesModel;
 use App\Models\ProductModel;
+use App\Models\UsersModel;
 
 class Admin extends BaseController
 {
 
     public function index()
     {
+        $userModel = new UsersModel();
+        $productModel = new ProductModel();
+        $member = $userModel->countAllMember();
+        $product = $productModel->countAllproduct();
         $data = [
-            'title'      => 'Gaming Store | Admin'
+            'title'      => 'Gaming Store | Admin',
+            'member'     => $member,
+            'product'    => $product
         ];
         return view('admin/index', $data);
     }

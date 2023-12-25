@@ -24,4 +24,8 @@ class ProductModel extends Model
     {
         return $this->where('slug', $slug)->first();
     }
+    public function countAllProduct()
+    {
+        return $this->db->table('products')->countAll();
+    }
 }
