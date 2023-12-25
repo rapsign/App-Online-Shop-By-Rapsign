@@ -3,7 +3,7 @@
 <div class="page-title">
     <div class="row">
         <div class="col-12 col-md-6 order-md-1 order-last mb-5">
-            <h3>Products </h3>
+            <h3>Products</h3>
         </div>
         <div class="col-12 col-md-6 order-md-2 order-first">
             <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
@@ -18,7 +18,9 @@
 <div class="page-content">
     <section>
         <div class="card p-5">
-            <a href="<?= base_url('/admin/products/add') ?>" type="button" class="btn btn-primary btn-sm mb-3"><i class="bi bi-eye"></i></a>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                <a href="<?= base_url('/admin/products/add') ?>" type="button" class="btn btn-primary btn-sm mb-3"><i class="bi bi-clipboard-plus"></i> Add Products</a>
+            </div>
             <div class="axil-product-cart-area axil-section-gap">
                 <div class="axil-product-cart-wrap">
                     <div class="table-responsive">
@@ -43,7 +45,7 @@
                                         <td class="product-price" data-title="Price">IDR <?= number_format($products['product_price'], 0, ".", "."); ?></td>
                                         <td class="product-quantity"><?= $products['product_stock']; ?></td>
                                         <td class="product-subtotal">
-                                            <button type="button" class="btn btn-primary btn-sm"><i class="bi bi-eye"></i></button>
+                                            <a href="<?= base_url('admin/products/view/') . $products['slug']  ?>" type="button" class="btn btn-primary btn-sm"><i class="bi bi-eye"></i></a>
                                             <button type="button" class="btn btn-danger btn-sm" id="deleteButton" data-custom="<?= $products['id']; ?>" onclick="return confirmDeleteProduct();"><i class="bi bi-trash"></i></button>
                                         </td>
                                     </tr>
