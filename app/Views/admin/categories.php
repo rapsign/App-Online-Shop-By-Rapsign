@@ -40,7 +40,7 @@
                                                 <td class="product-thumbnail"><?= $category['categories_name']; ?></td>
                                                 <td class="product-subtotal">
                                                     <button onclick="showForm(this)" type="button" class="btn btn-primary btn-sm"><i class="bi bi-pencil-square"></i></button>
-                                                    <button type=" button" class="btn btn-danger btn-sm" onclick="return confirmDelete();"><i class="bi bi-trash"></i></button>
+                                                    <button type=" button" class="btn btn-danger btn-sm" id="deleteButton" data-custom="<?= $category['id']; ?>" onclick="return confirmDeleteCategory();"><i class="bi bi-trash"></i></button>
                                                 </td>
                                             </tr>
                                         <?php endforeach ?>
@@ -144,7 +144,9 @@
     }
 </script>
 <script>
-    function confirmDelete() {
+    function confirmDeleteCategory() {
+        var button = document.getElementById('deleteButton');
+        var id = button.getAttribute('data-custom');
         Swal.fire({
             title: 'Are you sure?',
             text: 'You won\'t be able to revert this!',
@@ -155,7 +157,7 @@
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                window.location.href = '<?= base_url('admin/categories/delete/') . $category['id'] ?>';
+                window.location.href = '<?= base_url('admin/categories/delete/') ?>' + id;
             }
         });
         return false;

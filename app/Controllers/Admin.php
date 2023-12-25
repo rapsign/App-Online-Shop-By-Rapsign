@@ -119,6 +119,15 @@ class Admin extends BaseController
             return redirect()->to('/admin/products/add')->withInput()->with('errors', $errors);
         }
     }
+    public function productsDelete($id)
+    {
+        $productModel = new ProductModel();
+        $findImgById = $productModel->find($id);
+        unlink('assets/images/product/' . $findImgById['product_image']);
+        $productModel->delete($id);
+        session()->setFlashdata('danger', 'Product deleted');
+        return redirect()->to('/admin/products');
+    }
 
     public function categories()
     {
