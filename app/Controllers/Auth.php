@@ -120,7 +120,7 @@ class Auth extends BaseController
                 'isLogin' => true,
                 'logged_in' => $getID['id']
             ];
-
+            session()->set($sessLogin);
             // Set session data
             return redirect()->to('/');
         }
