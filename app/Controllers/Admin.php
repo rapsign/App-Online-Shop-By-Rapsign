@@ -34,6 +34,116 @@ class Admin extends BaseController
         ];
         return view('admin/products', $data);
     }
+    public function productsView($slug)
+    {
+        $productModel    = new ProductModel();
+        $categoriesModel = new CategoriesModel();
+        $brandsModel     = new BrandModel();
+        $categories      = $categoriesModel->findAll();
+        $brands          = $brandsModel->findAll();
+        $products = $productModel
+            ->join('categories', 'products.categories_id = categories.id')
+            ->join('brands', 'products.brands_id = brands_id')
+            ->findBySlug($slug);
+        $data = [
+            'title'      => 'Gaming Store |' . $products['slug']
+        ];
+        $productSess = [
+            'products'    => $products,
+            'categories' => $categories,
+            'brands'     => $brands
+        ];
+        session()->set($productSess);
+        return view('admin/viewProducts', $data);
+    }
+    public function productsEditProcess($slug)
+    {
+        $productModel = new ProductModel();
+        $cekProductName = $productModel->where(['slug' => $slug])->first();
+        if ($cekProductName['product_name'] == $this->request->getVar('product_name')) {
+            $rule = 'required';
+        } else {
+            $rule = 'required|is_unique[products.product_name]';
+        }
+        $validation = \Config\Services::validation();
+        $validation->setRules([
+            'product_name' => [
+                'rules' => $rule,
+                'errors' => [
+                    'required' => 'The product name must be filled in',
+                    'is_unique' => 'product names must be different'
+                ],
+            ],
+            'product_price' => [
+                'rules' => 'required|integer',
+                'errors' => [
+                    'required' => 'The product price must be filled in',
+                    'integer' => 'Product price must be a number, Example: 1000000',
+                ],
+            ],
+            'product_stock' => [
+                'rules' => 'required|integer',
+                'errors' => [
+                    'required' => 'The product stock must be filled in',
+                    'integer' => 'Product stock must be a number, Example: 100',
+                ],
+            ],
+            'product_image' => [
+                'rules' => 'max_size[product_image,1048]|max_dims[product_image,500,500]|is_image[product_image]|mime_in[product_image,image/jpg,image/jpeg,image/png]',
+                'errors' => [
+                    'max_dims' => 'Maximum image dimensions 500x500',
+                    'is_image' => 'File must be an image',
+                    'mime_in'  => 'File must be an image',
+                    'max_size' => 'Image size max 1Mb',
+                ],
+            ],
+            'categories_id' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'The product category must be filled in',
+                ],
+            ],
+            'brands_id' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'The product brand must be filled in',
+                ],
+            ],
+        ]);
+
+        if ($validation->withRequest($this->request)->run()) {
+            // Handle image upload
+            $getImage = $this->request->getFile('product_image');
+            if ($getImage->isValid()) {
+                $nameImageRandom = $getImage->getRandomName();
+                $getImage->move('assets/images/product', $nameImageRandom);
+                unlink('assets/images/product/' . session('products.product_image'));
+            } else {
+                $nameImageRandom = session('products.product_image');
+            }
+
+            $id = $productModel->findColumn('id', $slug);
+            $data = [
+                'id' => $id,
+                'product_name' => $this->request->getVar('product_name'),
+                'slug' => url_title($this->request->getVar('product_name'), '-', TRUE),
+                'product_price' => $this->request->getVar('product_price'),
+                'product_stock' => $this->request->getVar('product_stock'),
+                'product_image' => $nameImageRandom,
+                'categories_id' => $this->request->getVar('categories_id'),
+                'brands_id' => $this->request->getVar('brands_id'),
+                'product_description' => $this->request->getVar('product_description'),
+            ];
+
+            $productModel->save($data);
+
+            session()->setFlashdata('success', 'Product Changes');
+            return redirect()->back();
+        } else {
+            $errors = $validation->getErrors();
+            return redirect()->back()->withInput()->with('errors', $errors);
+        }
+    }
     public function productsAddView()
     {
         $categoriesModel = new CategoriesModel();

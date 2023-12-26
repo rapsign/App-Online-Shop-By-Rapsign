@@ -25,6 +25,8 @@ $routes->get('/admin', 'Admin::index');
 $routes->get('/admin/products', 'Admin::products');
 $routes->get('/admin/products/add', 'Admin::productsAddView');
 $routes->post('/admin/products/addProcess', 'Admin::productsAddProcess');
+$routes->get('/admin/products/view/(:any)', 'Admin::productsView/$1');
+$routes->post('/admin/products/edit/(:any)', 'Admin::productsEditProcess/$1');
 $routes->get('/admin/products/delete/(:num)', 'Admin::productsDelete/$1');
 $routes->get('/admin/categories', 'Admin::categories');
 $routes->post('admin/categories/add', 'Admin::categoriesAdd');
