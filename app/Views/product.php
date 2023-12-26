@@ -31,13 +31,21 @@
                             <div class="col-lg-9">
                                 <div class="category-select ">
                                     <!-- Start Single Select  -->
-                                    <select class="single-select" id="linkDropdown" onchange="redirectToLink()">
-                                        <option value="<?= base_url('/product'); ?>">Categories</option>
+                                    <select class="single-select" id="linkCategories" onchange="redirectToLinkCategory()">
+                                        <option selected disabled>Categories</option>
+                                        <option value="<?= base_url('/product'); ?>">All Product</option>
                                         <?php foreach ($categories as $name) : ?>
                                             <option value=" <?= base_url('product/categories/' . $name['categories_name']); ?>"><?= $name['categories_name']; ?></option>
                                         <?php endforeach ?>
-                                        < </select>
-                                            <!-- End Single Select  -->
+                                    </select>
+                                    <select class="single-select" id="linkBrands" onchange="redirectToLinkBrand()">
+                                        <option selected disabled>Brands</option>
+                                        <option value="<?= base_url('/product'); ?>">All Product</option>
+                                        <?php foreach ($brands as $name) : ?>
+                                            <option value=" <?= base_url('product/brands/' . $name['brands_name']); ?>"><?= $name['brands_name']; ?></option>
+                                        <?php endforeach ?>
+                                    </select>
+                                    <!-- End Single Select  -->
                                 </div>
                             </div>
                         </div>
@@ -64,7 +72,6 @@
                         </div>
                     </div>
                 <?php endforeach ?>
-
                 <!-- End Single Product  -->
             </div>
         </div>
@@ -74,4 +81,30 @@
     <!-- Start Axil Newsletter Area  -->
     <!-- End Axil Newsletter Area  -->
 </main>
+<?= $this->endSection(); ?>
+<?= $this->section('script'); ?>
+<script>
+    function redirectToLinkCategory() {
+        var dropdown = document.getElementById("linkCategories");
+        var selectedOption = dropdown.options[dropdown.selectedIndex].value;
+
+        // Check if a valid option is selected
+        if (selectedOption) {
+            // Redirect to the selected link
+            window.location.href = selectedOption;
+        }
+    }
+</script>
+<script>
+    function redirectToLinkBrand() {
+        var dropdown = document.getElementById("linkBrands");
+        var selectedOption = dropdown.options[dropdown.selectedIndex].value;
+
+        // Check if a valid option is selected
+        if (selectedOption) {
+            // Redirect to the selected link
+            window.location.href = selectedOption;
+        }
+    }
+</script>
 <?= $this->endSection(); ?>

@@ -114,18 +114,8 @@
         <?= $this->renderSection('page-content'); ?>
 
     </div>
-    <script>
-        function redirectToLink() {
-            var dropdown = document.getElementById("linkDropdown");
-            var selectedOption = dropdown.options[dropdown.selectedIndex].value;
+    <?= $this->renderSection('script'); ?>
 
-            // Check if a valid option is selected
-            if (selectedOption) {
-                // Redirect to the selected link
-                window.location.href = selectedOption;
-            }
-        }
-    </script>
     <!-- jQuery -->
     <script src="../../assets/js/vendor/modernizr.min.js"></script>
     <!-- jQuery JS -->
