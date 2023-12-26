@@ -7,7 +7,7 @@
     <title><?= $title ?></title>
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400&display=swap">
     <link rel="stylesheet" href="<?= base_url() ?>/assets/css/bootstrap.css">
     <link rel="stylesheet" href="<?= base_url() ?>/assets/vendor/perfect-scrollbar.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
@@ -20,6 +20,10 @@
         .dt-button {
             background-color: #435ebe !important;
             color: white !important;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
         }
     </style>
 </head>
@@ -79,18 +83,9 @@
 
             <?= $this->renderSection('page-content'); ?>
 
-            <footer>
-                <div class="footer clearfix mb-0 text-muted">
-                    <div class="float-start">
-                        <p>2021 &copy; Mazer</p>
-                    </div>
-                    <div class="float-end">
-                        <p>Crafted with <span class="text-danger"><i class="bi bi-heart"></i></span> by <a href="http://ahmadsaugi.com">A. Saugi</a></p>
-                    </div>
-                </div>
-            </footer>
         </div>
     </div>
+
 
     <script src="<?= base_url() ?>/assets/js/vendor/perfect-scrollbar.min.js"></script>
     <script src="<?= base_url() ?>/assets/js/vendor/bootstrap.bundle.min.js"></script>
@@ -111,7 +106,6 @@
             $('#categoryTable').DataTable();
         });
     </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/6.8.2/tinymce.min.js" referrerpolicy="origin"></script>
     <script>
         $(document).ready(function() {
             $('#myTable').DataTable();

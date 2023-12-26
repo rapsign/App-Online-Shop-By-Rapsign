@@ -91,4 +91,15 @@
         <?php } ?>
     });
 </script>
+<script>
+    $(function() {
+        <?php if (session()->has("danger")) { ?>
+            Swal.fire({
+                icon: 'success',
+                title: 'Great!',
+                text: '<?= session("danger") ?>'
+            })
+        <?php } ?>
+    });
+</script>
 <?= $this->endSection(); ?>

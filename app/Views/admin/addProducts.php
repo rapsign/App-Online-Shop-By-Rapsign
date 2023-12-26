@@ -135,7 +135,22 @@
 
 <script>
     ClassicEditor
-        .create(document.querySelector('#default'))
+        .create(document.querySelector('#default'), {
+            toolbar: {
+                items: [
+                    'heading',
+                    '|',
+                    'bold',
+                    'italic',
+                    'link', // Keep other buttons you want
+                    'bulletedList',
+                    'numberedList',
+                    '|',
+                    'undo',
+                    'redo'
+                ]
+            }
+        })
         .catch(error => {
             console.error(error);
         });
