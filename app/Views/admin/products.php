@@ -80,4 +80,15 @@
         return false;
     }
 </script>
+<script>
+    $(function() {
+        <?php if (session()->has("success")) { ?>
+            Swal.fire({
+                icon: 'success',
+                title: 'Great!',
+                text: '<?= session("success") ?>'
+            })
+        <?php } ?>
+    });
+</script>
 <?= $this->endSection(); ?>

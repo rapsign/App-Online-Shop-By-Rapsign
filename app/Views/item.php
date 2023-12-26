@@ -52,8 +52,6 @@
                                         <p>Stock <?= $product['product_stock']; ?> (<span><?= $product['product_sold'] == 0 ? '0' : $product['product_sold'] ?></span> Sold)</p>
                                     </div>
                                 </div>
-
-
                                 <div class="product-variations-wrapper">
 
                                     <!-- Start Product Variation  -->
@@ -65,10 +63,9 @@
                                     <!-- End Product Variation  -->
 
                                 </div>
-
                                 <!-- Start Product Action Wrapper  -->
                                 <div class="product-action-wrapper d-flex-center">
-                                    <form class="singin-form" action="<?= base_url('checkout/' . $product['id']) ?>" method="post">
+                                    <form class="singin-form" action="<?= base_url('checkout/' . $product['slug']) ?>" method="post">
                                         <div class="row">
                                             <div class="col">
                                                 Quantity

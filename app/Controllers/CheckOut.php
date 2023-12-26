@@ -9,14 +9,13 @@ class CheckOut extends BaseController
     private $url = "https://api.rajaongkir.com/starter/";
     private $apiKey = "f2df69c9dd6baae6d19c3bc78974b5d2";
 
-    public function index($id): string
+    public function index($slug): string
     {
         $province = $this->rajaongkir('province');
         $productModel = new ProductModel();
         $qty = $this->request->getVar('qty');
-        $products = $productModel->find($id);
-        $productPrice = $productModel->where('id', $id)->findColumn('product_price');
-        $subTotal = array_product($productPrice) * intval($qty);
+        $products = $productModel->findBySlug($slug);
+        $subTotal = $products['product_price'] * intval($qty);
         $data = [
             'title' => 'Gaming Store || Check out',
             'provinsi' => json_decode($province)->rajaongkir->results
@@ -74,13 +73,10 @@ class CheckOut extends BaseController
     }
     private function rajaongkir($method, $id_province = null)
     {
-
         $endPoint = $this->url . $method;
-
         if ($id_province != null) {
             $endPoint = $endPoint . "?province=" . $id_province;
         }
-
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
@@ -95,7 +91,6 @@ class CheckOut extends BaseController
                 "key: " . $this->apiKey
             ),
         ));
-
         $response = curl_exec($curl);
         $err = curl_error($curl);
 

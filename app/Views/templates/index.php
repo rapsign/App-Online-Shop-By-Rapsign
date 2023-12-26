@@ -14,17 +14,18 @@
     ============================================ -->
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="../../assets/css/vendor/bootstrap.min.css">
-    <link rel="stylesheet" href="../../assets/css/vendor/font-awesome.css">
-    <link rel="stylesheet" href="../../assets/css/vendor/flaticon/flaticon.css">
-    <link rel="stylesheet" href="../../assets/css/vendor/slick.css">
-    <link rel="stylesheet" href="../../assets/css/vendor/slick-theme.css">
-    <link rel="stylesheet" href="../../assets/css/vendor/jquery-ui.min.css">
-    <link rel="stylesheet" href="../../assets/css/vendor/sal.css">
-    <link rel="stylesheet" href="../../assets/css/vendor/magnific-popup.css">
-    <link rel="stylesheet" href="../../assets/css/vendor/base.css">
-    <link rel="stylesheet" href="../../assets/css/style.min.css">
+    <link rel="stylesheet" href="<?= base_url() ?>/assets/css/vendor/bootstrap.min.css">
+    <link rel="stylesheet" href="<?= base_url() ?>/assets/css/vendor/font-awesome.css">
+    <link rel="stylesheet" href="<?= base_url() ?>/assets/css/vendor/flaticon/flaticon.css">
+    <link rel="stylesheet" href="<?= base_url() ?>/assets/css/vendor/slick.css">
+    <link rel="stylesheet" href="<?= base_url() ?>/assets/css/vendor/slick-theme.css">
+    <link rel="stylesheet" href="<?= base_url() ?>/assets/css/vendor/jquery-ui.min.css">
+    <link rel="stylesheet" href="<?= base_url() ?>/assets/css/vendor/sal.css">
+    <link rel="stylesheet" href="<?= base_url() ?>/assets/css/vendor/magnific-popup.css">
+    <link rel="stylesheet" href="<?= base_url() ?>/assets/css/vendor/base.css">
+    <link rel="stylesheet" href="<?= base_url() ?>/assets/css/style.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
 <body class="sticky-header">
     <a href="#top" class="back-to-top" id="backto-top"><i class="fal fa-arrow-up"></i></a>
@@ -117,25 +118,25 @@
     <?= $this->renderSection('script'); ?>
 
     <!-- jQuery -->
-    <script src="../../assets/js/vendor/modernizr.min.js"></script>
+    <script src="<?= base_url() ?>/assets/js/vendor/modernizr.min.js"></script>
     <!-- jQuery JS -->
-    <script src="../../assets/js/vendor/jquery.js"></script>
+    <script src="<?= base_url() ?>/assets/js/vendor/jquery.js"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <!-- Bootstrap JS -->
-    <script src="../../assets/js/vendor/popper.min.js"></script>
-    <script src="../../assets/js/vendor/bootstrap.min.js"></script>
-    <script src="../../assets/js/vendor/slick.min.js"></script>
-    <script src="../../assets/js/vendor/js.cookie.js"></script>
+    <script src="<?= base_url() ?>/assets/js/vendor/popper.min.js"></script>
+    <script src="<?= base_url() ?>/assets/js/vendor/bootstrap.min.js"></script>
+    <script src="<?= base_url() ?>/assets/js/vendor/slick.min.js"></script>
+    <script src="<?= base_url() ?>/assets/js/vendor/js.cookie.js"></script>
     <!-- <script src="../../assets/js/vendor/jquery.style.switcher.js"></script> -->
-    <script src="../../assets/js/vendor/jquery-ui.min.js"></script>
-    <script src="../../assets/js/vendor/jquery.ui.touch-punch.min.js"></script>
-    <script src="../../assets/js/vendor/jquery.countdown.min.js"></script>
-    <script src="../../assets/js/vendor/sal.js"></script>
-    <script src="../../assets/js/vendor/jquery.magnific-popup.min.js"></script>
-    <script src="../../assets/js/vendor/imagesloaded.pkgd.min.js"></script>
-    <script src="../../assets/js/vendor/isotope.pkgd.min.js"></script>
-    <script src="../../assets/js/vendor/counterup.js"></script>
-    <script src="../../assets/js/vendor/waypoints.min.js"></script>
+    <script src="<?= base_url() ?>/assets/js/vendor/jquery-ui.min.js"></script>
+    <script src="<?= base_url() ?>/assets/js/vendor/jquery.ui.touch-punch.min.js"></script>
+    <script src="<?= base_url() ?>/assets/js/vendor/jquery.countdown.min.js"></script>
+    <script src="<?= base_url() ?>/assets/js/vendor/sal.js"></script>
+    <script src="<?= base_url() ?>/assets/js/vendor/jquery.magnific-popup.min.js"></script>
+    <script src="<?= base_url() ?>/assets/js/vendor/imagesloaded.pkgd.min.js"></script>
+    <script src="<?= base_url() ?>/assets/js/vendor/isotope.pkgd.min.js"></script>
+    <script src="<?= base_url() ?>/assets/js/vendor/counterup.js"></script>
+    <script src="<?= base_url() ?>/assets/js/vendor/waypoints.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <!-- Main JS -->

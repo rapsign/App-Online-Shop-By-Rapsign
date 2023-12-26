@@ -10,7 +10,7 @@ $routes->get('/product', 'Product::index');
 $routes->get('/product/categories/(:any)', 'Product::categories/$1');
 $routes->get('/product/brands/(:any)', 'Product::brands/$1');
 $routes->get('/item/(:any)', 'Item::index/$1');
-$routes->post('/checkout/(:num)', 'CheckOut::index/$1', ['as' => 'checkout.process']);
+$routes->post('/checkout/(:any)', 'CheckOut::index/$1', ['as' => 'checkout.process']);
 $routes->get('/checkout/getCity', 'CheckOut::getCity');
 $routes->get('/checkout/getCost', 'CheckOut::getCost');
 $routes->get('/auth/google', 'Auth::redirectToGoogle');

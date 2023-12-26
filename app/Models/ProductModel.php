@@ -11,7 +11,7 @@ class ProductModel extends Model
 
     protected $useAutoIncrement = true;
 
-    protected $allowedFields = ['product_name', 'product_price', 'product_stock', 'product_description', 'product_sold', 'product_image', 'slug', 'categories_id', 'brands_id'];
+    protected $allowedFields = ['product_name', 'product_price', 'product_stock', 'product_description', 'product_sold', 'product_weight', 'product_image', 'slug', 'categories_id', 'brands_id'];
 
     // Dates
     protected $useTimestamps = true;

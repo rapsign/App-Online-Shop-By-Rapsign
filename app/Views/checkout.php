@@ -17,7 +17,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Address <span>*</span></label>
-                                <textarea class="mb--15" rows="3" value="<?= user()->address; ?>" name="address" required></textarea>
+                                <textarea class="mb--15" rows="3" name="address" required><?= user()->address; ?></textarea>
                             </div>
                             <div class="form-group">
                                 <label>Province <span>*</span></label>
@@ -31,7 +31,7 @@
                             <div class="form-group">
                                 <label>Town/ City <span>*</span></label>
                                 <select id="city" name="city" required>
-                                    <option>Select Town/ City</option>
+                                    <option>Select Town/City</option>
                                 </select>
                             </div>
                             <div class="form-group">
@@ -42,7 +42,6 @@
                                 <label>Email Address <span>*</span></label>
                                 <input type="email" id="email" value="<?= user()->email; ?>" name="email" required>
                             </div>
-
                             <div class="form-group">
                                 <label>Other Notes (optional)</label>
                                 <textarea id="notes" rows="2" name="notes" placeholder="Notes about your order, e.g. speacial notes for delivery."></textarea>
@@ -62,7 +61,7 @@
                                 </thead>
                                 <tbody>
                                     <tr class="order-product">
-                                        <td><?= session('orderData.item')['product_name']; ?> <span class="quantity">x<?= session('orderData.quantity') ?></span></td>
+                                        <td><?= session('orderData.item.product_name') ?> <span class="quantity">x<?= session('orderData.quantity') ?></span></td>
                                         <td>Rp <?= number_format(session('orderData.subTotal'), 2, ',', '.'); ?></td>
                                     </tr>
                                     <tr class="order-subtotal">
@@ -106,10 +105,8 @@
     <!-- End Checkout Area  -->
 
 </main>
-
 <?= $this->endSection(); ?>
 <?= $this->section('script'); ?>
-
 <script>
     $(document).ready(function() {
         var price = <?= session('orderData.subTotal') ?>;
@@ -146,7 +143,7 @@
                 data: {
                     'origin': 154,
                     'destination': id_city,
-                    'weight': 1000,
+                    'weight': <?= session('orderData.item.product_weight') ?> * <?= session('orderData.quantity') ?>,
                     'courier': 'jne'
                 },
                 dataType: 'json',

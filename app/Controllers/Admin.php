@@ -78,14 +78,14 @@ class Admin extends BaseController
                 'rules' => 'required|integer',
                 'errors' => [
                     'required' => 'The product price must be filled in',
-                    'integer' => 'Product price must be a number, Example: 1000000',
+                    'integer' => 'Product price must be a number, Example = 1000000',
                 ],
             ],
             'product_stock' => [
                 'rules' => 'required|integer',
                 'errors' => [
                     'required' => 'The product stock must be filled in',
-                    'integer' => 'Product stock must be a number, Example: 100',
+                    'integer' => 'Product stock must be a number, Example = 100',
                 ],
             ],
             'product_image' => [
@@ -109,6 +109,13 @@ class Admin extends BaseController
                     'required' => 'The product brand must be filled in',
                 ],
             ],
+            'product_weight' => [
+                'rules' => 'required|integer',
+                'errors' => [
+                    'required' => 'The product weight must be filled in',
+                    'integer' => 'Product weight must be a number, Example = 100',
+                ],
+            ],
         ]);
 
         if ($validation->withRequest($this->request)->run()) {
@@ -129,6 +136,7 @@ class Admin extends BaseController
                 'slug' => url_title($this->request->getVar('product_name'), '-', TRUE),
                 'product_price' => $this->request->getVar('product_price'),
                 'product_stock' => $this->request->getVar('product_stock'),
+                'product_weight' => $this->request->getVar('product_weight'),
                 'product_image' => $nameImageRandom,
                 'categories_id' => $this->request->getVar('categories_id'),
                 'brands_id' => $this->request->getVar('brands_id'),
@@ -205,6 +213,13 @@ class Admin extends BaseController
                     'required' => 'The product brand must be filled in',
                 ]
             ],
+            'product_weight' => [
+                'rules' => 'required|integer',
+                'errors' => [
+                    'required' => 'The product weight must be filled in',
+                    'integer' => 'Product weight must be a number, Example = 100',
+                ],
+            ],
         ]);
         if ($validation->withRequest($this->request)->run()) {
             $getImage = $this->request->getFile('product_image');
@@ -215,6 +230,7 @@ class Admin extends BaseController
                 'slug' => url_title($this->request->getVar('product_name'), '-', TRUE),
                 'product_price' => $this->request->getVar('product_price'),
                 'product_stock' => $this->request->getVar('product_stock'),
+                'product_weight' => $this->request->getVar('product_weight'),
                 'product_image' => $nameImageRandom,
                 'categories_id' => $this->request->getVar('categories_id'),
                 'brands_id' => $this->request->getVar('brands_id'),

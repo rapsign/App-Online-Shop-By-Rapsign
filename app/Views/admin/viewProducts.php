@@ -135,6 +135,18 @@
                                 <?php endif ?>
                             </div>
                         </div>
+                        <div class="mb-3">
+                            <label class="form-label">Product Weight</label>
+                            <div class="input-group">
+                                <span class="input-group-text">Grams</span>
+                                <input type="number" class="form-control <?= (session('errors.product_weight')) ? 'is-invalid' : ''; ?>" aria-describedby="Example = 100" name="product_weight" value="<?= session('products.product_weight'); ?>">
+                                <div class="invalid-feedback">
+                                    <?php if ($fieldErrors = session('errors.product_weight')) : ?>
+                                        <?= esc($fieldErrors) ?>
+                                    <?php endif ?>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="col-md">
                         <div class="input-group mb-3">

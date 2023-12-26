@@ -89,6 +89,18 @@
                                 <?php endif ?>
                             </div>
                         </div>
+                        <div class="mb-3">
+                            <label class="form-label">Product Weight</label>
+                            <div class="input-group">
+                                <span class="input-group-text">Grams</span>
+                                <input type="number" class="form-control <?= (session('errors.product_weight')) ? 'is-invalid' : ''; ?>" aria-describedby="Example = 1000" name="product_weight" value="<?= old('product_weight') ?>">
+                                <div class="invalid-feedback">
+                                    <?php if ($fieldErrors = session('errors.product_weight')) : ?>
+                                        <?= esc($fieldErrors) ?>
+                                    <?php endif ?>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="col-md">
                         <div class="input-group mb-3">
@@ -105,7 +117,7 @@
                             </div>
                         </div>
                         <div class="mb-3">
-                            <img src="<?= base_url() ?>/assets/images/img-preview.png" id="product_image" width="350" height="350" class="img-thumbnail">
+                            <img src="<?= base_url() ?>/assets/images/img-preview.png" id="product_image" width="440" height="440" class="img-thumbnail">
                         </div>
                     </div>
                     <div class="mb-3">
@@ -120,6 +132,7 @@
 </div>
 <?= $this->endSection(); ?>
 <?= $this->section('script'); ?>
+
 <script>
     ClassicEditor
         .create(document.querySelector('#default'))
