@@ -17,6 +17,8 @@ $routes->get('/auth/google', 'Auth::redirectToGoogle');
 $routes->get('/auth/google/callback', 'Auth::handleGoogleCallback');
 $routes->get('/auth/google/callback/register', 'Auth::handleGoogleCallback');
 $routes->get('/account', 'Account::index');
+$routes->post('/account/update-profile/(:num)', 'Account::updateProfile/$1');
+$routes->post('/account/update-password/(:num)', 'Account::updatePassword/$1');
 $routes->get('/set-password', 'Auth::setPasswordForm');
 $routes->post('/set-password', 'Auth::setPassword');
 $routes->post('/payment', 'Payment::index');

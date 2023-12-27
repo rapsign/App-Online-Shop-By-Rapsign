@@ -80,9 +80,7 @@
                     <i class="bi bi-justify fs-3"></i>
                 </a>
             </header>
-
             <?= $this->renderSection('page-content'); ?>
-
         </div>
     </div>
 

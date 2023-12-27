@@ -181,14 +181,14 @@ class Admin extends BaseController
                 'rules' => 'required|integer',
                 'errors' => [
                     'required' => 'The product price must be filled in',
-                    'is_unique' => 'product price must be number, Example = 1000000'
+                    'integer' => 'product price must be number, Example = 1000000'
                 ]
             ],
             'product_stock' => [
                 'rules' => 'required|integer',
                 'errors' => [
                     'required' => 'The product stock must be filled in',
-                    'is_unique' => 'product stock must be number, Example = 100'
+                    'integer' => 'product stock must be number, Example = 100'
                 ]
             ],
             'product_image' => [

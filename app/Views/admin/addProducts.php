@@ -132,7 +132,6 @@
 </div>
 <?= $this->endSection(); ?>
 <?= $this->section('script'); ?>
-
 <script>
     ClassicEditor
         .create(document.querySelector('#default'), {
