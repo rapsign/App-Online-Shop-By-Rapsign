@@ -25,6 +25,7 @@ class Payment extends BaseController
         $total = $this->request->getVar('total');
         $shippingPrice = $this->request->getVar('shipPrice');
         $service = $this->request->getVar('service');
+        $estimation = $this->request->getVar('estimation');
         $orderId = rand();
         $userData = [
             "orderId" => $orderId,
@@ -38,6 +39,7 @@ class Payment extends BaseController
             "total" => $total,
             "shippingPrice" => $shippingPrice,
             "service" => $service,
+            "estimation" => $estimation
         ];
         $mergeSession = array_merge($itemData, $userData);
         session()->set('orderData', $mergeSession);

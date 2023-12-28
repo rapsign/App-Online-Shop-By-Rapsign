@@ -15,8 +15,6 @@ class Item extends BaseController
             'title'  => $products['product_name'],
             'product' => $products,
             'product1' => $products1,
-
-
         ];
         return view('item', $data);
     }

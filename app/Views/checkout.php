@@ -13,15 +13,15 @@
                             <?= csrf_field() ?>
                             <div class="form-group">
                                 <label>Full Name <span>*</span></label>
-                                <input type="text" id="first-name" value="<?= user()->fullname; ?>" name="fullname" required>
+                                <input type="text" class="<?= (session('errors.fullname')) ? 'is-invalid' : ''; ?>" id="first-name" value="<?= user()->fullname; ?>" name="fullname">
                             </div>
                             <div class="form-group">
                                 <label>Address <span>*</span></label>
-                                <textarea class="mb--15" rows="3" name="address" required><?= user()->address; ?></textarea>
+                                <textarea class="mb--15" rows="3" name="address"><?= user()->address; ?></textarea>
                             </div>
                             <div class="form-group">
                                 <label>Province <span>*</span></label>
-                                <select id="province" name="province" required>
+                                <select id="province" name="province">
                                     <option>Select Province</option>
                                     <?php foreach ($provinsi as $province) : ?>
                                         <option value="<?= $province->province ?>" att="<?= $province->province_id ?>"><?= $province->province ?></option>
@@ -30,17 +30,17 @@
                             </div>
                             <div class="form-group">
                                 <label>Town/ City <span>*</span></label>
-                                <select id="city" name="city" required>
+                                <select id="city" name="city">
                                     <option>Select Town/City</option>
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label>Phone <span>*</span></label>
-                                <input type="tel" id="phone" value="<?= user()->phone_number; ?>" name="phone_number" required>
+                                <input type="tel" id="phone" value="<?= user()->phone_number; ?>" name="phone_number">
                             </div>
                             <div class="form-group">
                                 <label>Email Address <span>*</span></label>
-                                <input type="email" id="email" value="<?= user()->email; ?>" name="email" required>
+                                <input type="email" id="email" value="<?= user()->email; ?>" name="email">
                             </div>
                             <div class="form-group">
                                 <label>Other Notes (optional)</label>
@@ -95,6 +95,7 @@
                         </div>
                         <input type="hidden" id="hiddenService" name="service" required>
                         <input type="hidden" id="hidden" name="total" required>
+                        <input type="hidden" id="est" name="estimated" required>
                         <button type="submit" class="axil-btn btn-bg-primary checkout-btn" id="payment">Process to Checkout</button>
                     </div>
                 </div>
@@ -180,13 +181,13 @@
             $("#total").html(formatRupiah(total));
             $("#hidden").val(total);
             $("#hiddenService").val(service);
+            $("#est").val(estimation);
         });
     });
 </script>
 <script>
     function validateForm() {
         var total = document.getElementById("hidden").value.trim();
-
         if (total === '') {
             Swal.fire({
                 title: 'OOopps!',
@@ -196,7 +197,6 @@
             });
             return false;
         }
-
         return true;
     }
 </script>
