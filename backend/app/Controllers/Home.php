@@ -2,6 +2,9 @@
 
 namespace App\Controllers;
 
+use CodeIgniter\RESTful\ResourceController;
+use CodeIgniter\API\ResponseTrait;
+
 use App\Models\ProductModel;
 
 class Home extends BaseController
@@ -15,9 +18,7 @@ class Home extends BaseController
         $data = [
             'product1' => $products1,
             'product2' => $products2,
-            'title'    => 'Gaming Store'
         ];
-
-        return view('index', $data);
+        return $this->respond($data);
     }
 }
