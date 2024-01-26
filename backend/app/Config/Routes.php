@@ -5,6 +5,10 @@ use CodeIgniter\Router\RouteCollection;
 /**
  * @var RouteCollection $routes
  */
+$routes->resource('products');
+$routes->resource('users');
+
+
 $routes->get('/', 'Home::index');
 $routes->get('/product', 'Product::index');
 $routes->get('/product/categories/(:any)', 'Product::categories/$1');

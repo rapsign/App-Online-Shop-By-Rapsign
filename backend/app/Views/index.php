@@ -1,7 +1,6 @@
 <?= $this->extend('templates/index'); ?>
 <?= $this->section('page-content'); ?>
 <main class="main-wrapper">
-    <!-- Start Slider Area -->
     <div class="axil-main-slider-area main-slider-style-3">
         <div class="container">
             <div class="row align-items-center">
@@ -14,7 +13,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>

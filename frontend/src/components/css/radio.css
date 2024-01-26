@@ -1,0 +1,40 @@
+.range-variant {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: -5px;
+    padding-left: 0;
+  }
+  
+  .range-variant li {
+    margin: 5px;
+    border: 2px solid #f6f7fb;
+  }
+  
+  .range-variant li input[type="radio"] {
+    display: none;
+  }
+  
+  .range-variant li label {
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    font-weight: 500;
+    line-height: 24px;
+    cursor: pointer;
+    transition: .3s;
+  }
+  
+  .range-variant li input[type="radio"]:checked + label {
+    font-weight: 1000;
+    border-color: #656973; /* Warna border saat dicentang */
+  }
+  
+  @media only screen and (max-width: 767px) {
+    .range-variant li label {
+      font-size: 15px;
+    }
+  }
+  
